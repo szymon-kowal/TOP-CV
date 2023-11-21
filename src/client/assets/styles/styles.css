@@ -1,3 +1,21 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+}
+
 h1 {
-	color: pink;
+  margin-top: 0;
+}
+
+body {
+  background-color: rgb(142, 165, 241);
 }
