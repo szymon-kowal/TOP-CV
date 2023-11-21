@@ -1,20 +1,21 @@
 import React from "react";
+import type { DisplayProps } from "./interfaces";
 
-interface DisplayValues {
-  inputValues: Record<string, string>;
-}
+const DisplayVal: React.FC<DisplayProps> = ({ data }) => {
+  let i = 0;
 
-const DisplayVal: React.FC<DisplayValues> = ({ inputValues }) => {
+  const inputKeys = Object.entries(data).filter(([key]) =>
+    key.startsWith("input"),
+  );
+
   return (
-    <div className="displayForm">
-      <h2>Input Values:</h2>
-      <ul>
-        {Object.entries(inputValues).map(([fieldName, value]) => (
-          <li key={fieldName}>
-            {fieldName}: {value}
-          </li>
-        ))}
-      </ul>
+    <div className="outputContainer">
+      {inputKeys.map(([key, value]) => (
+        <div key={key}>
+          <div className="titleData">{data.names[i++]}</div>
+          {value}
+        </div>
+      ))}
     </div>
   );
 };

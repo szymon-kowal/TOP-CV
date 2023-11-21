@@ -1,24 +1,16 @@
 import React from "react";
+import type { InputProps } from "./interfaces";
 
-interface InputFieldProps {
-  fieldName: string;
-  value: string;
-  onChange: (fieldname: string, value: string) => void;
-}
-
-const InputForm: React.FC<InputFieldProps> = ({
-  fieldName,
-  value,
-  onChange,
-}) => {
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    onChange(fieldName, event.target.value);
-  };
-
+const InputForm: React.FC<InputProps> = ({ fieldName, value, onChange }) => {
   return (
     <div>
-      <label htmlFor={fieldName}>{fieldName}:</label>
-      <input type="text" id={fieldName} value={value} onChange={handleChange} />
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => {
+          onChange(fieldName, e.target.value);
+        }}
+      />
     </div>
   );
 };
