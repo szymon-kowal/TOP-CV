@@ -9,41 +9,19 @@ import type {
   EducationData,
   ExperienceData,
 } from "./assets/components/interfaces";
+import dataBasic from "./assets/components/inputData";
 
 const App: React.FC = () => {
-  const [data, setData] = useState<DataObject>({
-    input1: "",
-    input2: "",
-    input3: "",
-    input4: "",
-    names: ["Full name", "Email", "Phone number", "Adress"],
-  });
+  const [data, setData] = useState<DataObject>(dataBasic.data);
 
-  const [educationData, setEducationData] = useState<EducationData>({
-    input1: "",
-    input2: "",
-    input3: "",
-    input4: "",
-    input5: "",
-    names: ["School", "Degree", "Start Date", "End Date", "Location"],
-  });
+  const [educationData, setEducationData] = useState<EducationData>(
+    dataBasic.education,
+  );
 
-  const [experienceData, setExperienceData] = useState<ExperienceData>({
-    input1: "",
-    input2: "",
-    input3: "",
-    input4: "",
-    input5: "",
-    input6: "",
-    names: [
-      "Company Name",
-      "Position Title",
-      "Start Date",
-      "End Date",
-      "Location",
-      "Description",
-    ],
-  });
+  const [experienceData, setExperienceData] = useState<ExperienceData>(
+    dataBasic.experience,
+  );
+
   function handleSetData(key: string, value: string): void {
     setData((prevData) => ({
       ...prevData,
@@ -67,7 +45,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      <h1>Hello World</h1>
+      <h1>CV Maker</h1>
       <PersonalDetails data={data} onChange={handleSetData} />
       <EducationDetails
         data={educationData}
