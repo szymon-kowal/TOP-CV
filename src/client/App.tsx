@@ -1,63 +1,66 @@
 import React, { useState } from "react";
-import "./assets/styles/styles.css";
-import PersonalDetails from "./assets/components/personalDetails";
-import EducationDetails from "./assets/components/educationDetails";
-import ExperienceDetails from "./assets/components/experienceDetails";
-import DisplayVal from "./assets/components/displayForm";
-import type {
-  DataObject,
-  EducationData,
-  ExperienceData,
-} from "./assets/components/interfaces";
-import dataBasic from "./assets/components/inputData";
+import InputGroup from "./assets/components/inputGroup";
+// import { keyToTitle } from "./assets/components/helperFunctions";
+// todo - send data to db, clear data from inputs
+interface DbProps {
+  personalData: Array<Record<string, string>>;
+  experienceData: Array<Record<string, string>>;
+  educationData: Array<Record<string, string>>;
+}
 
 const App: React.FC = () => {
-  const [data, setData] = useState<DataObject>(dataBasic.data);
+  const [db, setDb] = useState<DbProps>({
+    personalData: [],
+    experienceData: [],
+    educationData: [],
+  });
 
-  const [educationData, setEducationData] = useState<EducationData>(
-    dataBasic.education,
-  );
+  const [personalData, setPersonalData] = useState<Record<string, string>>({
+    fullName: "",
+    email: "",
+    phoneNumber: "",
+    address: "",
+  });
 
-  const [experienceData, setExperienceData] = useState<ExperienceData>(
-    dataBasic.experience,
-  );
+  const [experienceData, setExperienceData] = useState<Record<string, string>>({
+    companyName: "",
+    positionTitle: "",
+    startDate: "",
+    endDate: "",
+    location: "",
+    description: "",
+  });
 
-  function handleSetData(key: string, value: string): void {
-    setData((prevData) => ({
-      ...prevData,
-      [key]: value,
-    }));
+  const [educationData, setEducationData] = useState<Record<string, string>>({
+    school: "",
+    description: "",
+    degree: "",
+    startDate: "",
+    endDate: "",
+    location: "",
+  });
+
+  // const [visibility, setVisibility] = useState<string>();
+
+  function handlePersonalData(keyName: string, val: string): void {
+    setPersonalData((prevData) => ({ ...prevData, [keyName]: val }));
   }
 
-  function handleSetEducationData(key: string, value: string): void {
-    setEducationData((prevData) => ({
-      ...prevData,
-      [key]: value,
-    }));
+  function handleExperienceData(keyName: string, val: string): void {
+    setExperienceData((prevData) => ({ ...prevData, [keyName]: val }));
   }
 
-  function handleSetExperienceData(key: string, value: string): void {
-    setExperienceData((prevData) => ({
-      ...prevData,
-      [key]: value,
-    }));
+  function handleEducationData(keyName: string, val: string): void {
+    setEducationData((prevData) => ({ ...prevData, [keyName]: val }));
   }
 
+  /* <div>{keyToTitle(Object.keys(personalData)[0])}</div> */
   return (
     <>
-      <h1>CV Maker</h1>
-      <PersonalDetails data={data} onChange={handleSetData} />
-      <EducationDetails
-        data={educationData}
-        onChange={handleSetEducationData}
-      />
-      <ExperienceDetails
-        data={experienceData}
-        onChange={handleSetExperienceData}
-      />
-      <DisplayVal data={data} />
-      <DisplayVal data={educationData} />
-      <DisplayVal data={experienceData} />
+      <InputGroup data={personalData} onChange={handlePersonalData} />
+      <InputGroup data={experienceData} onChange={handleExperienceData} />
+      <InputGroup data={educationData} onChange={handleEducationData} />
+      <button></button>
     </>
   );
 };
