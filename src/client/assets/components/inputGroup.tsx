@@ -11,12 +11,11 @@ const InputGroup: React.FC<InputGroupProps> = ({ data, onChange }) => {
   return (
     <>
       {Object.entries(data).map(([fieldName, val]) => (
-        <div key={fieldName}>
+        <div key={fieldName} className={`${fieldName} item`}>
           <label>{keyToTitle(fieldName)}</label>
           <InputField value={val} fieldName={fieldName} onChange={onChange} />
         </div>
       ))}
-      ;
     </>
   );
 };
