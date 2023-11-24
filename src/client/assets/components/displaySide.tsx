@@ -1,6 +1,5 @@
 import React from "react";
 import type { DbProps } from "./interfaces";
-// interface DisplaySideProps {}
 
 const DisplaySide: React.FC<DbProps> = ({
   personalData,
