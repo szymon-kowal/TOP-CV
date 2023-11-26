@@ -11,14 +11,6 @@ export interface PersonalData {
   address: string;
 }
 
-export interface EducationData {
-  startDate: string;
-  endDate: string;
-  location: string;
-  school: string;
-  degree: string;
-}
-
 export interface ExperienceData {
   startDate: string;
   endDate: string;
@@ -27,3 +19,9 @@ export interface ExperienceData {
   positionTitle: string;
   description: string;
 }
+
+export interface DBProps {
+  educationData: [];
+  experienceData: [];
+}
+export type KeyDBProps = "educationData" | "experienceData";
