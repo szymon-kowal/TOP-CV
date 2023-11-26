@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { type KeyDBProps } from "./interfaces";
+import { v4 as uuidv4 } from "uuid";
 
 interface DBFormProps {
   handleSubmit: (keyDB: KeyDBProps, valueDB: object) => void;
@@ -25,7 +26,7 @@ const DBForm: React.FC<DBFormProps> = ({
 
   const handleFormSubmit = (e: React.ChangeEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    handleSubmit(keyDB, formData);
+    handleSubmit(keyDB, { id: uuidv4(), ...formData });
     setFormData(Object.fromEntries(fieldsNames.map((name) => [name, ""])));
   };
 

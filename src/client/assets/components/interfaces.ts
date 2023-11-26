@@ -11,15 +11,6 @@ export interface PersonalData {
   address: string;
 }
 
-export interface ExperienceData {
-  startDate: string;
-  endDate: string;
-  location: string;
-  companyName: string;
-  positionTitle: string;
-  description: string;
-}
-
 export interface DBProps {
   educationData: [];
   experienceData: [];
