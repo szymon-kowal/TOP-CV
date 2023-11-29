@@ -91,9 +91,12 @@ const App: React.FC = () => {
         onRemove={itemRemove}
         onSave={itemSave}
       />
-      {JSON.stringify(personalData, null, 2)}
-      {JSON.stringify(db, null, 2)}
-      <p>{personalData.name}</p>
+      <DBItems
+        database={db}
+        keyDB={"experienceData"}
+        onRemove={itemRemove}
+        onSave={itemSave}
+      />
     </div>
   );
 };
