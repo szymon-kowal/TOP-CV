@@ -9,7 +9,6 @@ interface DBItemsProps {
   onRemove: (keyDB: KeyDBProps, index: number) => void;
 }
 
-// todo: I have one state for all objects that i got from DB, need to adress it
 const DBItems: React.FC<DBItemsProps> = ({
   database,
   keyDB,

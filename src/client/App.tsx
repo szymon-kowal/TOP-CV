@@ -6,8 +6,25 @@ import DBItems from "./assets/components/dbItems";
 
 const App: React.FC = () => {
   const [db, setDb] = useState<DBProps>({
-    educationData: [],
-    experienceData: [],
+    educationData: [
+      {
+        school: "1",
+        location: "1",
+        degree: "1",
+        startDate: "1",
+        endDate: "1",
+      },
+    ],
+    experienceData: [
+      {
+        companyName: "1",
+        location: "1",
+        positionTitle: "1",
+        startDate: "1",
+        endDate: "1",
+        description: "1",
+      },
+    ],
   });
 
   const [personalData, setPersonalData] = useState<Record<string, string>>({
@@ -69,34 +86,42 @@ const App: React.FC = () => {
   };
 
   return (
-    <div>
-      <PersonalDataForm
-        personalData={personalData}
-        inputFnc={handlePersonalData}
-      />
+    <div className="container">
+      <div className="header">CV Maker</div>
+      <div className="mainContent">
+        <div className="leftSide">
+          <PersonalDataForm
+            personalData={personalData}
+            inputFnc={handlePersonalData}
+          />
 
-      <DBForm
-        handleSubmit={handleSetDB}
-        keyDB={"educationData"}
-        fieldsNames={eduactionNames}
-      />
-      <DBForm
-        handleSubmit={handleSetDB}
-        keyDB={"experienceData"}
-        fieldsNames={experienceNames}
-      />
-      <DBItems
-        database={db}
-        keyDB={"educationData"}
-        onRemove={itemRemove}
-        onSave={itemSave}
-      />
-      <DBItems
-        database={db}
-        keyDB={"experienceData"}
-        onRemove={itemRemove}
-        onSave={itemSave}
-      />
+          <DBForm
+            handleSubmit={handleSetDB}
+            keyDB={"educationData"}
+            fieldsNames={eduactionNames}
+          />
+          <DBItems
+            database={db}
+            keyDB={"educationData"}
+            onRemove={itemRemove}
+            onSave={itemSave}
+          />
+          <DBForm
+            handleSubmit={handleSetDB}
+            keyDB={"experienceData"}
+            fieldsNames={experienceNames}
+          />
+
+          <DBItems
+            database={db}
+            keyDB={"experienceData"}
+            onRemove={itemRemove}
+            onSave={itemSave}
+          />
+        </div>
+        <div className="rightSide"></div>
+      </div>
+      <div className="footer">Made by Szymon Kowal (github)</div>
     </div>
   );
 };

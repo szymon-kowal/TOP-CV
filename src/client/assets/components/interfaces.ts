@@ -12,7 +12,7 @@ export interface PersonalData {
 }
 
 export interface DBProps {
-  educationData: [];
-  experienceData: [];
+  educationData: Array<Record<string, string>>;
+  experienceData: Array<Record<string, string>>;
 }
 export type KeyDBProps = "educationData" | "experienceData";
