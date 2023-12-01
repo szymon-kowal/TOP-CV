@@ -10,6 +10,7 @@ html {
 
 :root {
   --topBot-clr: rgb(29, 29, 59);
+  --brdr-rad: 10px;
 }
 
 body {
@@ -21,9 +22,9 @@ body {
   background-color: rgb(142, 165, 241);
 }
 
-/* * {
+* {
   outline: solid 1px red;
-} */
+}
 
 #root,
 .container {
@@ -37,7 +38,7 @@ body {
 }
 
 .leftSide {
-  max-width: 400px;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
   background-color: rgb(230, 230, 227);
@@ -49,6 +50,7 @@ body {
   padding: 10px;
   padding-top: 0;
   margin-left: 30px;
+  flex: 1;
 }
 
 .mainContent {
@@ -63,10 +65,18 @@ body {
 }
 
 .remove {
+  background-color: rgb(252, 44, 44);
+}
+
+.remove:hover {
   background-color: red;
 }
 
 .add {
+  background-color: rgb(64, 139, 64);
+}
+
+.add:hover {
   background-color: green;
 }
 
@@ -79,7 +89,7 @@ body {
 input {
   padding: 10px;
   border: none;
-  border-radius: 10px;
+  border-radius: var(--brdr-rad);
   font-size: 1rem;
 }
 
@@ -101,4 +111,101 @@ input {
 
 .submit {
   margin: 10px 0;
+}
+
+.btn {
+  padding: 10px;
+  border: none;
+  flex: 1;
+  font-size: 1.2rem;
+  font-weight: 550;
+  border-radius: var(--brdr-rad);
+  transition: background-color 0.3s;
+  color: white;
+}
+
+.submit {
+  background-color: rgba(29, 29, 59, 0.85);
+}
+
+.submit:hover {
+  background-color: var(--topBot-clr);
+}
+
+.buttonsCont {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.mainContent {
+  display: flex;
+}
+
+.rightSide {
+  flex: 1;
+}
+
+.cvContent {
+  border: 3px solid black;
+  margin: 0px 20px;
+  padding: 15px;
+}
+
+.cvHeader {
+  display: flex;
+}
+
+.textLeft {
+  flex: 2;
+}
+
+.textRight {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.nameText {
+  font-size: 2.5rem;
+  color: blueviolet;
+  margin: 0;
+  font-weight: 550;
+}
+
+.textTitle {
+  font-size: 1.5rem;
+  color: black;
+}
+
+.verticalLine {
+  background-color: var(--topBot-clr);
+  height: 3px;
+}
+
+.titleCV {
+  font-size: 1.5rem;
+  font-weight: 550;
+  margin: 5px 0;
+}
+
+.itemDB {
+  display: flex;
+  gap: 30px;
+  margin: 20px 0;
+}
+
+.titleItem {
+  font-weight: 600;
+}
+
+.experience {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.experienceTitle {
+  display: flex;
+  gap: 30px;
 }

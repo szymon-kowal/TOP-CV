@@ -8,33 +8,33 @@ const App: React.FC = () => {
   const [db, setDb] = useState<DBProps>({
     educationData: [
       {
-        school: "1",
-        location: "1",
-        degree: "1",
-        startDate: "1",
-        endDate: "1",
+        school: "school",
+        location: "loc",
+        degree: "def",
+        startDate: "start",
+        endDate: "end",
       },
     ],
     experienceData: [
       {
-        companyName: "1",
-        location: "1",
-        positionTitle: "1",
-        startDate: "1",
-        endDate: "1",
-        description: "1",
+        companyName: "compName",
+        location: "location",
+        positionTitle: "position",
+        startDate: "start",
+        endDate: "end",
+        description: "description",
       },
     ],
   });
 
   const [personalData, setPersonalData] = useState<Record<string, string>>({
-    firstName: "",
-    lastName: "",
-    title: "",
-    adress: "",
-    phoneNumber: "",
-    email: "",
-    description: "",
+    firstName: "sz",
+    lastName: "ko",
+    title: "it",
+    adress: "wro",
+    phoneNumber: "555",
+    email: "interia",
+    description: "programmer",
   });
 
   function handleSetDB(keyDB: KeyDBProps, valueDB: object): void {
@@ -119,7 +119,67 @@ const App: React.FC = () => {
             onSave={itemSave}
           />
         </div>
-        <div className="rightSide"></div>
+        <div className="rightSide">
+          <div className="cvContent">
+            <div className="cvHeader">
+              <div className="textLeft">
+                <div className="textName">
+                  <p className="nameText">
+                    {personalData.firstName + " "}
+                    {personalData.lastName}
+                  </p>
+                </div>
+                <div className="textTitle">{personalData.title}</div>
+              </div>
+              <div className="textRight">
+                <div className="personalText adress">{personalData.adress}</div>
+                <div className="personalText phoneNumber">
+                  {personalData.phoneNumber}
+                </div>
+                <div className="personalText email">{personalData.email}</div>
+              </div>
+            </div>
+            <div className="verticalLine"></div>
+            <div className="personalText description">
+              {personalData.description}
+            </div>
+            <div className="cvText">
+              <div className="titleCV">Education</div>
+              <div className="itemDB education">
+                <div className="titleItem">{db.educationData[0].degree}</div>
+                <div className="dbText">
+                  <strong>{db.educationData[0].school}</strong>
+                  {" - " +
+                    db.educationData[0].location +
+                    " | " +
+                    db.educationData[0].startDate +
+                    " - " +
+                    db.educationData[0].endDate}
+                </div>
+              </div>
+
+              <div className="titleCV">Experience</div>
+              <div className="itemDB experience">
+                <div className="experienceTitle">
+                  <div className="titleItem">
+                    {db.experienceData[0].positionTitle}
+                  </div>
+                  <div className="titleExperience">
+                    {db.experienceData[0].companyName +
+                      " " +
+                      db.experienceData[0].location +
+                      " | " +
+                      db.experienceData[0].startDate +
+                      db.experienceData[0].endDate}
+                  </div>
+                </div>
+                <div className="experienceCont">
+                  {db.experienceData[0].description}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="footer">Made by Szymon Kowal (github)</div>
     </div>
