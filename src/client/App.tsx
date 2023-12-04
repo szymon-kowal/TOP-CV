@@ -6,18 +6,35 @@ import DBItems from "./assets/components/dbItems";
 
 const App: React.FC = () => {
   const [db, setDb] = useState<DBProps>({
-    educationData: [],
-    experienceData: [],
+    educationData: [
+      {
+        school: "school",
+        location: "loc",
+        degree: "def",
+        startDate: "start",
+        endDate: "end",
+      },
+    ],
+    experienceData: [
+      {
+        companyName: "compName",
+        location: "location",
+        positionTitle: "position",
+        startDate: "start",
+        endDate: "end",
+        description: "description",
+      },
+    ],
   });
 
   const [personalData, setPersonalData] = useState<Record<string, string>>({
-    firstName: "",
-    lastName: "",
-    title: "",
-    adress: "",
-    phoneNumber: "",
-    email: "",
-    description: "",
+    firstName: "sz",
+    lastName: "ko",
+    title: "it",
+    adress: "wro",
+    phoneNumber: "555",
+    email: "interia",
+    description: "programmer",
   });
 
   function handleSetDB(keyDB: KeyDBProps, valueDB: object): void {
@@ -69,31 +86,102 @@ const App: React.FC = () => {
   };
 
   return (
-    <div>
-      <PersonalDataForm
-        personalData={personalData}
-        inputFnc={handlePersonalData}
-      />
+    <div className="container">
+      <div className="header">CV Maker</div>
+      <div className="mainContent">
+        <div className="leftSide">
+          <PersonalDataForm
+            personalData={personalData}
+            inputFnc={handlePersonalData}
+          />
 
-      <DBForm
-        handleSubmit={handleSetDB}
-        keyDB={"educationData"}
-        fieldsNames={eduactionNames}
-      />
-      <DBForm
-        handleSubmit={handleSetDB}
-        keyDB={"experienceData"}
-        fieldsNames={experienceNames}
-      />
-      <DBItems
-        database={db}
-        keyDB={"educationData"}
-        onRemove={itemRemove}
-        onSave={itemSave}
-      />
-      {JSON.stringify(personalData, null, 2)}
-      {JSON.stringify(db, null, 2)}
-      <p>{personalData.name}</p>
+          <DBForm
+            handleSubmit={handleSetDB}
+            keyDB={"educationData"}
+            fieldsNames={eduactionNames}
+          />
+          <DBItems
+            database={db}
+            keyDB={"educationData"}
+            onRemove={itemRemove}
+            onSave={itemSave}
+          />
+          <DBForm
+            handleSubmit={handleSetDB}
+            keyDB={"experienceData"}
+            fieldsNames={experienceNames}
+          />
+
+          <DBItems
+            database={db}
+            keyDB={"experienceData"}
+            onRemove={itemRemove}
+            onSave={itemSave}
+          />
+        </div>
+        <div className="rightSide">
+          <div className="cvContent">
+            <div className="cvHeader">
+              <div className="textLeft">
+                <div className="textName">
+                  <p className="nameText">
+                    {personalData.firstName + " "}
+                    {personalData.lastName}
+                  </p>
+                </div>
+                <div className="textTitle">{personalData.title}</div>
+              </div>
+              <div className="textRight">
+                <div className="personalText adress">{personalData.adress}</div>
+                <div className="personalText phoneNumber">
+                  {personalData.phoneNumber}
+                </div>
+                <div className="personalText email">{personalData.email}</div>
+              </div>
+            </div>
+            <div className="verticalLine"></div>
+            <div className="personalText description">
+              {personalData.description}
+            </div>
+            <div className="cvText">
+              <div className="titleCV">Education</div>
+              <div className="itemDB education">
+                <div className="titleItem">{db.educationData[0].degree}</div>
+                <div className="dbText">
+                  <strong>{db.educationData[0].school}</strong>
+                  {" - " +
+                    db.educationData[0].location +
+                    " | " +
+                    db.educationData[0].startDate +
+                    " - " +
+                    db.educationData[0].endDate}
+                </div>
+              </div>
+
+              <div className="titleCV">Experience</div>
+              <div className="itemDB experience">
+                <div className="experienceTitle">
+                  <div className="titleItem">
+                    {db.experienceData[0].positionTitle}
+                  </div>
+                  <div className="titleExperience">
+                    {db.experienceData[0].companyName +
+                      " " +
+                      db.experienceData[0].location +
+                      " | " +
+                      db.experienceData[0].startDate +
+                      db.experienceData[0].endDate}
+                  </div>
+                </div>
+                <div className="experienceCont">
+                  {db.experienceData[0].description}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="footer">Made by Szymon Kowal (github)</div>
     </div>
   );
 };

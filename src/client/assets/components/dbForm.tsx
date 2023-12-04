@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { type KeyDBProps } from "./interfaces";
 import { v4 as uuidv4 } from "uuid";
+import { keyToTitle } from "./helperFunctions";
 
 interface DBFormProps {
   handleSubmit: (keyDB: KeyDBProps, valueDB: object) => void;
@@ -31,22 +32,24 @@ const DBForm: React.FC<DBFormProps> = ({
   };
 
   return (
-    <div className="formContainer">
-      <form onSubmit={handleFormSubmit}>
-        {fieldsNames.map((name, index) => (
-          <input
-            type="text"
-            key={name + index}
-            name={name}
-            onChange={handleChange}
-            value={formData[name] ?? ""}
-            required
-          />
-        ))}
+    <form onSubmit={handleFormSubmit} className="flexCol">
+      <div className="title">{keyToTitle(keyDB)}</div>
+      {fieldsNames.map((name, index) => (
+        <input
+          type="text"
+          key={name + index}
+          name={name}
+          onChange={handleChange}
+          value={formData[name] ?? ""}
+          placeholder={keyToTitle(name)}
+          required
+        />
+      ))}
 
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+      <button type="submit" className="btn submit">
+        Submit
+      </button>
+    </form>
   );
 };
 

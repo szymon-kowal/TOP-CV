@@ -11,7 +11,8 @@ const PersonalDataForm: React.FC<PersonalDataFormProps> = ({
   inputFnc,
 }) => {
   return (
-    <form className="personalForm">
+    <form className="personalForm flexCol">
+      <div className="title">Personal data</div>
       {Object.keys(personalData).map((key) => (
         <input
           key={key}
